@@ -48,7 +48,7 @@ export default defineComponent({
   methods: {
     async fetchStoreStatistics() {
       try {
-        const response = await fetch(`http://localhost:3000/store/1/statistics/${this.selectedDate}`);
+        const response = await fetch(`http://localhost:8000/store/1/statistics/${this.selectedDate}`);
         if (!response.ok) {
           throw new Error('Failed to fetch store statistics');
         }

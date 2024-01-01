@@ -2,6 +2,13 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Prerequisites
+
+Before getting started, ensure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/en/) (>= 20.x.x)
+- [npm](https://www.npmjs.com/) (>= 10.x.x)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
@@ -22,6 +29,11 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
+
+```bash
+git clone git@github.com:mdiabi/propulso-webapp.git
+cd propulso-webapp
+```
 
 ```sh
 npm install

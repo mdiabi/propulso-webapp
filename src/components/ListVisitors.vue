@@ -76,7 +76,7 @@ export default defineComponent({
   methods: {
     async fetchVisitors() {
       try {
-        const response = await fetch(`http://localhost:3000/store/1/visitors?page=${this.currentPage}&page_size=${this.perPage}`);
+        const response = await fetch(`http://localhost:8000/store/1/visitors?page=${this.currentPage}&page_size=${this.perPage}`);
         if (!response.ok) {
           throw new Error('Failed to fetch visitors');
         }
