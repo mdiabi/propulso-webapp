@@ -64,12 +64,12 @@ interface StoreStatistics {
 export default defineComponent({
   data() {
     return {
-      statistics: {} as StoreStatistics, // Store statistics
-      visitors: [] as Visitor[], // All visitors data
-      paginatedVisitors: [] as Visitor[], // Paginated visitors data
-      perPage: 10, // Visitors per page
-      currentPage: 1, // Current page
-      totalVisitors: 0, // Total number of visitors
+      statistics: {} as StoreStatistics,
+      visitors: [] as Visitor[],
+      paginatedVisitors: [] as Visitor[],
+      perPage: 10,
+      currentPage: 1,
+      totalVisitors: 0,
       error: null as string | null,
     };
   },
@@ -81,25 +81,24 @@ export default defineComponent({
           throw new Error('Failed to fetch visitors');
         }
         const responseData = await response.json();
-        this.visitors = responseData;
-        this.totalVisitors = responseData.length; // Update total number of visitors
-        this.paginatedVisitors = this.visitors.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
-        this.error = null; // Reset error on successful fetch
+        this.paginatedVisitors = responseData.paginated_visitors;
+        this.totalVisitors = responseData.total_visitors;
+        this.error = null;
       } catch (error) {
         this.error = 'An error occurred while fetching visitors';
         console.error('Error fetching visitors:', error);
       }
     },
-    prevPage() {
+    async prevPage() {
       if (this.currentPage > 1) {
         this.currentPage--;
-        this.paginatedVisitors = this.visitors.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
+        await this.fetchVisitors();
       }
     },
-    nextPage() {
+    async nextPage() {
       if (this.currentPage * this.perPage < this.totalVisitors) {
         this.currentPage++;
-        this.paginatedVisitors = this.visitors.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
+        await this.fetchVisitors();
       }
     },
   },
